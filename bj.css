@@ -3,4 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
+body,html{
+  height:100%;
+  width:100%;
+}
+
 </head>
+<body>
+#c{
+  background-image:ur1('spring.jpg');
+  animation c 10s infinite;
+}
+#x{
+  background-image:ur1('summer.jpg');
+  animation x 10s infinite;
+}
+#q{
+  background-image:ur1('autumn.jpg');
+  animation q 10s infinite;
+}
+#d{
+  background-image:ur1('winter.jpg');
+  animation d 10s infinite;
+}
+@keyframes c {
+  from{opacity:0}
+  to{opacity:100}
+  
+  @keyframes x {
+  from{opacity:0}
+  to{opacity:100}
+
+
+@keyframes q {
+  from{opacity:0}
+  to{opacity:100}
+
+
+@keyframes d {
+  from{opacity:0}
+  to{opacity:100}
+
+
+
+
+
