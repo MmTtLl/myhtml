@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ºÚ¿ÍÈëÇÖ</title>
+        <title>é»‘å®¢å…¥ä¾µ</title>
         <style>
             *{padding:0;margin:0}
             html{overflow:hidden}
@@ -13,45 +13,121 @@
         <script type="text/javascript">
             
             window.onload = function(){
-                //»ñÈ¡»­²¼¶ÔÏó
+                //è·å–ç”»å¸ƒå¯¹è±¡
                 var canvas = document.getElementById("canvas");
-                //»ñÈ¡»­²¼µÄÉÏÏÂÎÄ
+                //è·å–ç”»å¸ƒçš„ä¸Šä¸‹æ–‡
                 var context =canvas.getContext("2d");
-                //»ñÈ¡ä¯ÀÀÆ÷ÆÁÄ»µÄ¿í¶ÈºÍ¸ß¶È
+                //è·å–æµè§ˆå™¨å±å¹•çš„å®½åº¦å’Œé«˜åº¦
                 var W = window.innerWidth;
                 var H = window.innerHeight;
-                //ÉèÖÃcanvasµÄ¿í¶ÈºÍ¸ß¶È
+                //è®¾ç½®canvasçš„å®½åº¦å’Œé«˜åº¦
                 canvas.width = W;
                 canvas.height = H;
-                //Ã¿¸öÎÄ×ÖµÄ×ÖÌå´óĞ¡
+                //æ¯ä¸ªæ–‡å­—çš„å­—ä½“å¤§å°
                 var fontSize = 16;
-                //¼ÆËãÁĞ
+                //è®¡ç®—åˆ—
                 var colunms = Math.floor(W /fontSize);
-                //¼ÇÂ¼Ã¿ÁĞÎÄ×ÖµÄyÖá×ø±ê
+                //è®°å½•æ¯åˆ—æ–‡å­—çš„yè½´åæ ‡
                 var drops = [];
-                //¸øÃ¿Ò»¸öÎÄ×Ö³õÊ¼»¯Ò»¸öÆğÊ¼µãµÄÎ»ÖÃ
+                //ç»™æ¯ä¸€ä¸ªæ–‡å­—åˆå§‹åŒ–ä¸€ä¸ªèµ·å§‹ç‚¹çš„ä½ç½®
                 for(var i=0;i<colunms;i++){
                     drops.push(0);
                 }
 
-                //ÔË¶¯µÄÎÄ×Ö
+                //è¿åŠ¨çš„æ–‡å­—
                 var str ="javascript html5 canvas";
-                //4:fillText(str,x,y);Ô­Àí¾ÍÊÇÈ¥¸ü¸ÄyµÄ×ø±êÎ»ÖÃ
-                //»æ»­µÄº¯Êı
+                //4:fillText(str,x,y);åŸç†å°±æ˜¯å»æ›´æ”¹yçš„åæ ‡ä½ç½®
+                //ç»˜ç”»çš„å‡½æ•°
                 function draw(){
                     context.fillStyle = "rgba(0,0,0,0.05)";
                     context.fillRect(0,0,W,H);
-                    //¸ø×ÖÌåÉèÖÃÑùÊ½
-                    context.font = "700 "+fontSize+"px  Î¢ÈíÑÅºÚ";
-                    //¸ø×ÖÌåÌí¼ÓÑÕÉ«
-                    context.fillStyle ="#00cc33";//¿ÉÒÔrgb,hsl, ±ê×¼É«£¬Ê®Áù½øÖÆÑÕÉ«
-                    //Ğ´Èë»­²¼ÖĞ
+                    //ç»™å­—ä½“è®¾ç½®æ ·å¼
+                    context.font = "700 "+fontSize+"px  å¾®è½¯é›…é»‘";
+                    //ç»™å­—ä½“æ·»åŠ é¢œè‰²
+                    context.fillStyle ="#00cc33";//å¯ä»¥rgb,hsl, æ ‡å‡†è‰²ï¼Œåå…­è¿›åˆ¶é¢œè‰²
+                    //å†™å…¥ç”»å¸ƒä¸­
                     for(var i=0;i<colunms;i++){
                         var index = Math.floor(Math.random() * str.length);
                         var x = i*fontSize;
                         var y = drops[i] *fontSize;
                         context.fillText(str[index],x,y);
-                        //Èç¹ûÒª¸Ä±äÊ±¼ä£¬¿Ï¶¨¾ÍÊÇ¸Ä±äÃ¿´ÎËûµÄÆğµã
+                        //å¦‚æœè¦æ”¹å˜æ—¶é—´ï¼Œè‚¯å®šå°±æ˜¯æ”¹å˜æ¯æ¬¡ä»–çš„èµ·ç‚¹
+                        if(y >= canvas.height && Math.random() > 0.99){
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
+
+                function randColor(){
+                    var r = Math.floor(Math.random() * 256);
+                    var g = Math.floor(Math.random() * 256);
+                    var b = Math.floor(Math.random() * 256);
+                    return "rgb("+r+","+g+","+b+")";
+                }
+
+                draw();
+                setInterval(draw,30);
+            };
+
+        </script>
+
+
+    </body>
+</html><!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>é»‘å®¢å…¥ä¾µ</title>
+        <style>
+            *{padding:0;margin:0}
+            html{overflow:hidden}
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" style="background:#111"></canvas>
+        <script type="text/javascript">
+            
+            window.onload = function(){
+                //è·å–ç”»å¸ƒå¯¹è±¡
+                var canvas = document.getElementById("canvas");
+                //è·å–ç”»å¸ƒçš„ä¸Šä¸‹æ–‡
+                var context =canvas.getContext("2d");
+                //è·å–æµè§ˆå™¨å±å¹•çš„å®½åº¦å’Œé«˜åº¦
+                var W = window.innerWidth;
+                var H = window.innerHeight;
+                //è®¾ç½®canvasçš„å®½åº¦å’Œé«˜åº¦
+                canvas.width = W;
+                canvas.height = H;
+                //æ¯ä¸ªæ–‡å­—çš„å­—ä½“å¤§å°
+                var fontSize = 16;
+                //è®¡ç®—åˆ—
+                var colunms = Math.floor(W /fontSize);
+                //è®°å½•æ¯åˆ—æ–‡å­—çš„yè½´åæ ‡
+                var drops = [];
+                //ç»™æ¯ä¸€ä¸ªæ–‡å­—åˆå§‹åŒ–ä¸€ä¸ªèµ·å§‹ç‚¹çš„ä½ç½®
+                for(var i=0;i<colunms;i++){
+                    drops.push(0);
+                }
+
+                //è¿åŠ¨çš„æ–‡å­—
+                var str ="javascript html5 canvas";
+                //4:fillText(str,x,y);åŸç†å°±æ˜¯å»æ›´æ”¹yçš„åæ ‡ä½ç½®
+                //ç»˜ç”»çš„å‡½æ•°
+                function draw(){
+                    context.fillStyle = "rgba(0,0,0,0.05)";
+                    context.fillRect(0,0,W,H);
+                    //ç»™å­—ä½“è®¾ç½®æ ·å¼
+                    context.font = "700 "+fontSize+"px  å¾®è½¯é›…é»‘";
+                    //ç»™å­—ä½“æ·»åŠ é¢œè‰²
+                    context.fillStyle ="#00cc33";//å¯ä»¥rgb,hsl, æ ‡å‡†è‰²ï¼Œåå…­è¿›åˆ¶é¢œè‰²
+                    //å†™å…¥ç”»å¸ƒä¸­
+                    for(var i=0;i<colunms;i++){
+                        var index = Math.floor(Math.random() * str.length);
+                        var x = i*fontSize;
+                        var y = drops[i] *fontSize;
+                        context.fillText(str[index],x,y);
+                        //å¦‚æœè¦æ”¹å˜æ—¶é—´ï¼Œè‚¯å®šå°±æ˜¯æ”¹å˜æ¯æ¬¡ä»–çš„èµ·ç‚¹
                         if(y >= canvas.height && Math.random() > 0.99){
                             drops[i] = 0;
                         }
