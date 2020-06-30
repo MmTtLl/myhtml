@@ -1,54 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ºÚ¿ÍÈëÇÖ</title>
+        <style>
+            *{padding:0;margin:0}
+            html{overflow:hidden}
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" style="background:#111"></canvas>
+        <script type="text/javascript">
+            
+            window.onload = function(){
+                //»ñÈ¡»­²¼¶ÔÏó
+                var canvas = document.getElementById("canvas");
+                //»ñÈ¡»­²¼µÄÉÏÏÂÎÄ
+                var context =canvas.getContext("2d");
+                //»ñÈ¡ä¯ÀÀÆ÷ÆÁÄ»µÄ¿í¶ÈºÍ¸ß¶È
+                var W = window.innerWidth;
+                var H = window.innerHeight;
+                //ÉèÖÃcanvasµÄ¿í¶ÈºÍ¸ß¶È
+                canvas.width = W;
+                canvas.height = H;
+                //Ã¿¸öÎÄ×ÖµÄ×ÖÌå´óĞ¡
+                var fontSize = 16;
+                //¼ÆËãÁĞ
+                var colunms = Math.floor(W /fontSize);
+                //¼ÇÂ¼Ã¿ÁĞÎÄ×ÖµÄyÖá×ø±ê
+                var drops = [];
+                //¸øÃ¿Ò»¸öÎÄ×Ö³õÊ¼»¯Ò»¸öÆğÊ¼µãµÄÎ»ÖÃ
+                for(var i=0;i<colunms;i++){
+                    drops.push(0);
+                }
 
-<head>
-    <title>MMTTLLçš„ä¸ªäººç½‘é¡µ</title>
-    <meta charset="utf-8" />
-    <style>
-        #game_nav ul,
-        #game_nav ul li {
-            list-style: none;
-            text-align: center;
-        }   
+                //ÔË¶¯µÄÎÄ×Ö
+                var str ="javascript html5 canvas";
+                //4:fillText(str,x,y);Ô­Àí¾ÍÊÇÈ¥¸ü¸ÄyµÄ×ø±êÎ»ÖÃ
+                //»æ»­µÄº¯Êı
+                function draw(){
+                    context.fillStyle = "rgba(0,0,0,0.05)";
+                    context.fillRect(0,0,W,H);
+                    //¸ø×ÖÌåÉèÖÃÑùÊ½
+                    context.font = "700 "+fontSize+"px  Î¢ÈíÑÅºÚ";
+                    //¸ø×ÖÌåÌí¼ÓÑÕÉ«
+                    context.fillStyle ="#00cc33";//¿ÉÒÔrgb,hsl, ±ê×¼É«£¬Ê®Áù½øÖÆÑÕÉ«
+                    //Ğ´Èë»­²¼ÖĞ
+                    for(var i=0;i<colunms;i++){
+                        var index = Math.floor(Math.random() * str.length);
+                        var x = i*fontSize;
+                        var y = drops[i] *fontSize;
+                        context.fillText(str[index],x,y);
+                        //Èç¹ûÒª¸Ä±äÊ±¼ä£¬¿Ï¶¨¾ÍÊÇ¸Ä±äÃ¿´ÎËûµÄÆğµã
+                        if(y >= canvas.height && Math.random() > 0.99){
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
 
-        a {
-            text-decoration: none;
-            color: black;
-            transition: all 0.5s;
-            font-size: 5vh;
-        }
+                function randColor(){
+                    var r = Math.floor(Math.random() * 256);
+                    var g = Math.floor(Math.random() * 256);
+                    var b = Math.floor(Math.random() * 256);
+                    return "rgb("+r+","+g+","+b+")";
+                }
 
-        a:hover,
-        a:active {
-            color: #2980b9;
-            font-size: 6vh;
-        }
-    </style>
-</head>
+                draw();
+                setInterval(draw,30);
+            };
 
-<body>
-    <div id="game_nav">
-        <h1>
-           æ³¨ï¼šæ‰“é£æœºå’Œæ±‚å©šå¿…å¤‡å±äºå¤šæ–‡ä»¶ç»„æˆï¼ŒåŠ è½½é€Ÿåº¦æ…¢ï¼Œè€Œä¸”å›¾ç‰‡åŠ è½½æ…¢ï¼Œè¯·è§è°…ã€‚
-        </h1>
-        <ul>
-            <li>
-                <a href="./game1/">è´ªåƒè›‡</a>
-            </li>
-            <li>
-                <a href="./game2/">ä½é…ç‰ˆè¶…çº§ç›ä¸½</a>
-            </li>
-            <li>
-                <a href="./game3/">three.jsçš„ç®€å•å®ä¾‹</a>
-            </li>
-            <li>
-                <a href="./game4/">æ‰“é£æœº</a>
-            </li>
-            <li>
-                <a href="./game5/">æ±‚å©šå¿…å¤‡</a>
-            </li>
-             <li>
-                <a href="./game6/">è£…ä¸ªé»‘å®¢å§</a>
-            </li>
-        </ul>
-    </div>
-</body>
+        </script>
+
+
+    </body>
+</html>
